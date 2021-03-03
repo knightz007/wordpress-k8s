@@ -1,8 +1,8 @@
 commonLabels:
-  appname: wordpress-2
+  appname: wordpress-1
 resources:
 - ../../bases/wordpress
-namespace: wordpress-2
+namespace: wordpress-1
 patches:
 - deployment.yaml
 - service.yaml
