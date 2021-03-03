@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress
+  labels:
+    app: wordpress
+spec:
+  selector:
+    matchLabels:
+      app: wordpress
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: wordpress
+        tier: frontend
+    spec:
+      containers:
+      - image: knights007/wordpress:v1.0.1
+        name: wordpress
+        env:
+        - name: WORDPRESS_DB_HOST
+          value:  "devopsinterview.cw7qgk28g9tl.us-east-1.rds.amazonaws.com"
+        - name: WORDPRESS_DB_USER
+          value: "devopsinterview"
+        - name: WORDPRESS_DB_PASSWORD
+          value: "d3v0ps-1nt3rv13w"
+        - name: WORDPRESS_DB_NAME
+          value: "devopsinterview"
+        ports:
+        - containerPort: 80
+          name: wordpress

@@ -1,0 +1,13 @@
+commonLabels:
+  appname: wordpress-2
+resources:
+- ../../bases/wordpress
+namespace: wordpress-2
+patches:
+- deployment.yaml
+- service.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+images:
+- name:  knights007/wordpress
+  newTag: 'v1.0.1'
